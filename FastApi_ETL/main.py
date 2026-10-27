@@ -4,13 +4,13 @@ from typing import List, AsyncGenerator
 from fastapi import FastAPI , HTTPException
 from fastapi.responses import StreamingResponse
 
-
+from etl_engine import PandasListETLEngine
 # Initiating FAST api
 
-app= FastAPI (title:"Pandas-Powered Streaming ETL", description="Architecture for streamlining millions of data")
+app= FastAPI (title="Pandas-Powered Streaming ETL", description="Architecture for streamlining millions of data")
 
 
-etl_engine = PandaListETLEnigne(chunk_size=50000)
+etl_engine = PandasListETLEngine(chunk_size=50000)
 
 async def stream_formatter(data_generator: AsyncGenerator[dict, None]) -> AsyncGenerator[str, None]:
     """
